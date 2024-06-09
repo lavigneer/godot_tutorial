@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://4wxjdc1hq8u8"]
+[gd_scene load_steps=20 format=3 uid="uid://4wxjdc1hq8u8"]
 
 [ext_resource type="PackedScene" uid="uid://d1cjgo64m5xc0" path="res://scenes/levels/level.tscn" id="1_g8kk6"]
 [ext_resource type="PackedScene" uid="uid://bbq7lleysjncj" path="res://scenes/objects/gate.tscn" id="2_oiaep"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://chcnlvn8c2bh2" path="res://graphics/tilesets/soil.png" id="11_pg6x8"]
 [ext_resource type="PackedScene" uid="uid://cvj250l45var7" path="res://scenes/objects/steam_vent.tscn" id="12_70lhm"]
 [ext_resource type="PackedScene" uid="uid://cic3kbw61v6r5" path="res://scenes/objects/light_fan_animation.tscn" id="13_6qaqe"]
+[ext_resource type="PackedScene" uid="uid://fpy6km6f6kg6" path="res://scenes/enemies/scout.tscn" id="16_dklss"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_roam2"]
 resource_name = "walls"
@@ -51,7 +52,13 @@ sources/1 = SubResource("TileSetAtlasSource_e5ilp")
 
 [node name="Outside" instance=ExtResource("1_g8kk6")]
 script = ExtResource("2_tbvca")
-inside_level_scene = ExtResource("1_g8kk6")
+
+[node name="Decals" parent="." index="0"]
+metadata/_edit_lock_ = true
+
+[node name="Gate" parent="." index="1" instance=ExtResource("2_oiaep")]
+z_index = 1
+metadata/_edit_lock_ = true
 
 [node name="Soil" type="Sprite2D" parent="Ground" index="0"]
 texture_repeat = 2
@@ -107,11 +114,20 @@ autoplay = "default"
 frame = 18
 frame_progress = 0.49233
 
-[node name="Gate" parent="." index="1" instance=ExtResource("2_oiaep")]
+[node name="Infestation" parent="." index="3"]
 metadata/_edit_lock_ = true
 
-[node name="Player" parent="." index="3"]
+[node name="Items" parent="." index="4"]
+metadata/_edit_lock_ = true
+
+[node name="Scout" parent="Enemies" index="0" instance=ExtResource("16_dklss")]
+position = Vector2(706, 985)
+
+[node name="Player" parent="." index="7"]
+z_index = 2
 position = Vector2(551, 390)
 metadata/_edit_group_ = true
 
 [connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]
+[connection signal="player_entered" from="Ground/House" to="." method="_on_house_player_entered"]
+[connection signal="player_exited" from="Ground/House" to="." method="_on_house_player_exited"]
