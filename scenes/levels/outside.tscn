@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://chcnlvn8c2bh2" path="res://graphics/tilesets/soil.png" id="11_pg6x8"]
 [ext_resource type="PackedScene" uid="uid://cvj250l45var7" path="res://scenes/objects/steam_vent.tscn" id="12_70lhm"]
 [ext_resource type="PackedScene" uid="uid://cic3kbw61v6r5" path="res://scenes/objects/light_fan_animation.tscn" id="13_6qaqe"]
-[ext_resource type="PackedScene" uid="uid://fpy6km6f6kg6" path="res://scenes/enemies/scout.tscn" id="16_dklss"]
+[ext_resource type="PackedScene" uid="uid://cdg1olis6dm7w" path="res://scenes/enemies/drone.tscn" id="16_c2h6g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_roam2"]
 resource_name = "walls"
@@ -120,8 +120,8 @@ metadata/_edit_lock_ = true
 [node name="Items" parent="." index="4"]
 metadata/_edit_lock_ = true
 
-[node name="Scout" parent="Enemies" index="0" instance=ExtResource("16_dklss")]
-position = Vector2(706, 985)
+[node name="Drone" parent="Enemies" index="0" instance=ExtResource("16_c2h6g")]
+position = Vector2(1098, 1148)
 
 [node name="Player" parent="." index="7"]
 z_index = 2
